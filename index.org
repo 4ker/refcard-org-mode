@@ -4,301 +4,83 @@
 #+EMAIL:     (concat "fniessen" at-sign "pirilampo.org")
 #+DESCRIPTION: Org mode syntax example
 #+KEYWORDS:  org-mode, syntax, quick reference, cheat sheet, recommended practices, latex, beamer, html
-#+LANGUAGE:  en
+#+LANGUAGE:  zh
 #+OPTIONS:   H:4 num:nil toc:2 p:t
-
-#+HTML_LINK_HOME: http://www.google.com
-#+HTML_LINK_UP: http://www.bing.com
-
-#+SETUPFILE: ~/.dotfiles/org/theme-readtheorg.setup
-
 #+PROPERTY:  header-args :eval yes :exports both :results replace
+#+HTML_LINK_HOME: http://tangzhixiong.com
+#+HTML_LINK_UP: http://tangzhixiong.com/readings
 
-# #+MACRO: longtext this is a very very long text to include
+# #+SETUPFILE: ~/git/readings/theme.setup
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+#+HTML_HEAD: <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+#+HTML_HEAD: <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github-gist.min.css">
+#+HTML_HEAD: <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="http://tangzhixiong.com/readings/css/main.css"/>
+#+HTML_HEAD: <script type="text/javascript" src="http://tangzhixiong.com/readings/javascript/main.js"></script>
+#+HTML_HEAD: <script>$(function(){ /*todo*/ });</script>
 
-| *Framework*   | Org mode 9                                          |
-| *Bug tracker* | https://github.com/fniessen/refcard-org-mode/issues |
-| *Source*      | https://github.com/fniessen/refcard-org-mode        |
-# | *Documentation* | http://refcard-org-mode.readthedocs.org/            |
+#+MACRO: tzx @@html:<span style="color: red">$1</span><br/>@@
 
 * Summary
-
-# See https://tutorialtodoapp.readthedocs.org/en/latest/ for nice home page!
-
 #+begin_sidebar
+{{{tzx(begin sidebar)}}}
 *You will learn to:*
-
 - write your docs in Org mode
 - create tables
 - create custom code blocks
 - and much more!
 #+end_sidebar
-
 #+begin_abstract
-This is an Org mode document, using the ~.org~ extension (supported by GitHub).
-
+{{{tzx(begin abstract)}}}
 *Org mode* is an easy-to-write /plain text/ formatting syntax for authoring notes,
 articles, LaTeX documents, books, Web pages, Beamer slide decks and much more!
-
-This is a cheat sheet for *Org mode 8* (because of some markup syntax changes
-since Org mode 7), using [[https://github.com/fniessen/org-html-themes][ReadTheOrg CSS]].
-
-Reading through all the [[http://orgmode.org/org.pdf][documentation]] is highly recommended, but for the truly
-impatient, following are some quick steps to get started.
 #+end_abstract
-
-# #+begin_abstract
-# This paper talks about...
-# #+end_abstract
-
-# See http://asciidoctor.org/docs/user-manual/#the-big-picture
-
-# See http://home.fnal.gov/~neilsen/notebook/orgExamples/org-examples.html.
-
-* Reference card
-
-#+TOC: headlines 2
-
-* Document header
-
-Title and author line:
-
-#+begin_src org :eval never-export
-,#+TITLE:     Org mode syntax examples
-,#+AUTHOR:    Fabrice Niessen
-
-My document provides...
-#+end_src
-
-It's a good practice to also include an email line following the author line.
-
-#+begin_src org :eval never-export
-,#+EMAIL:     john.doe@example.com
-#+end_src
-
 * Document settings
-
-** Document description
-
-#+begin_src org :eval never-export
-#+DESCRIPTION: This document catalogs a set of tips and tricks for composing documents in Org mode.
-#+KEYWORDS:  org-mode, syntax, quick reference, cheat sheet, recommended practices, latex, beamer, html
-#+LANGUAGE:  en
-#+end_src
-
 ** Section numbering
-
 #+begin_src org :eval never-export
 #+OPTIONS:   H:4
+## +OPTIONS:   num:nil
+## begin_src org :eval nerver-export
 #+end_src
-
-#+begin_src org :eval never-export
-#+OPTIONS:   num:nil
-#+end_src
-
 ** Table of contents
-
 Set the ~toc~ attribute to activate an auto-generated table of contents (limited
 to its 2 first levels) at the top of document.
-
-#+begin_src org :eval never-export
-#+OPTIONS:   toc:2
-#+end_src
-
-#+begin_src org :eval never-export
-#+OPTIONS:   p:t
-#+end_src
-
-#+begin_note
-The ~ALT_TITLE~ property allows to set an alternate title (shorter, for example)
-for a given headline in the table of contents and other running heads.
-#+end_note
-
-To locally insert the TOC at some random place, use the ~#+TOC: headlines [n]~
-feature; for example:
-
-#+begin_src org :eval never-export
-,#+TOC: headlines 2
-#+end_src
-
-** List of figures
-
-~#+TOC: figures~ is not implemented yet in the HTML backend.
-
-** List of tables
-
-~#+TOC: tables~ is already implemented in the HTML backend.
-
-** List of equations
-
-* Section titles (headings)
-
-#+begin_src org :eval no
-,* Biggest heading (level 1)
-
-New chapter.
-#+end_src
-
-#+begin_src org
-,** Bigger heading (level 2)
-
-New section.
-
-,*** Big heading (level 3)
-
-New sub-section.
-
-,**** Heading (level 4)
-
-New sub-sub-section.
-#+end_src
-
-** Numbered headings
-
-You can create numbered headings up to a certain level by setting an option:
-
-#+begin_src org
-,#+OPTIONS: H:4
-#+end_src
-
 * Paragraphs
-
-** Normal
-
 #+begin_src org
 A single newline has no effect.
 This line is part of the same paragraph.
 
 But an empty line
 
-demarcates paragraphs.
+demarcates (vt. 定…的界线;区分) paragraphs.
 #+end_src
-
-** Line breaks
-
 #+begin_src org
 By entering two consecutive backslashes, \\
 you can force a line break
 without starting a new paragraph.
 #+end_src
-
-** Horizontal rules
-
-#+begin_src org
-For an horizontal line, insert at least 5 dashes: this is some text above an
-horizontal rule
------
-and some text below it.
-#+end_src
-
-** Text width
-
-# Premiere Elements, page 111
-#
-# Vous pouvez créer ces objets en cliquant sur le bouton Nouvel| élément de le
-# fenêtre Média. (Le Chapitre 14 explique comment créer| des titres ; le
-# Chapitre 15 montre l'utilisation des barres et ton, de la| vidéo noir et de
-# l'amorce SMPTE.)
-#
-# The principles of beautiful Web design, page 6
-#
-# In a figurative sense, the concept of visual balance is similar to that of
-# physical balance| illustrated by a seesaw. Just as physical objects have
-# weight, so do the elements of a layout.| If the elements on either side of a
-# layout are of equal weight, they balance one another.| There are two main forms
-# of visual balance: symmetrical and asymmetrical.
-
-One morning, when Gregor Samsa woke from troubled dreams, he found himself
-transformed in his bed into a horrible vermin. He lay on his armour-like back,
-and if he lifted his head a little he could see his brown belly, slightly domed
-and divided by arches into stiff sections. The bedding was hardly able to cover
-it and seemed ready to slide off any moment. His many legs, pitifully thin
-compared with the size of the rest of him, waved about helplessly as he looked.
-
+** Horizontal rules: =-----=
 * Formatting text
-
-Text effects.
-
-** Bold and italic
-
-#+begin_src org
-/Emphasize/ (italics), *strongly* (bold), and */very strongly/* (bold italics).
-#+end_src
-
-Markup elements can be nested:
-
-#+begin_src org
-This is /italic text which contains _underlined text_ within it/, whereas _this is
-normal underlined text_.
-#+end_src
-
-Markup can span across multiple lines, by default *no more than 2*:
-
-#+begin_src org
-*This
-is not
-bold.*
-#+end_src
-
-Org mode does not interpret a marker surrounded by alphanumeric characters as an
-emphasis marker. So, you can't (easily) emphasize just part of a word:
-
-#+begin_src org
-Not feas*ible*.
-#+end_src
-
-** Monospace, superscript and subscript
-
-Other elements to use sparingly are:
-
-#+begin_src org
+- =/italics/, *bold*, and */bold italics/*= : (/italics/, *bold*, and */bold italics/*)
 - monospaced typewriter font for ~inline code~
 - monospaced typewriter font for =verbatim text=
 - +deleted text+ (vs. _inserted text_)
-- text with super^{script}, such as 2^{10}
-- text with sub_{script}, such as H_{2}O
-#+end_src
-
+- text with =super^{script}=, such as 2^{10}
+- text with =sub_{script}=, such as H_{2}O
 ** Smart punctuation
-
 If the XXX option is specified, Org mode will produce typographically correct
 output, converting straight quotes to curly quotes, ~---~ to em-dashes, ~--~ to
 en-dashes, and ~...~ to ellipses.
-
-* Lists
-
-Org markup allows you to create *bulleted* or *numbered* lists. It allows any
-combination of the two list types.
-
-** Unordered lists
-
-Itemized lists are marked with bullets. Create them with a minus or a plus sign.
-
-They are convenient to organize data, and make the document prettier, and easier
-to read.
-
-#+begin_src org
-- Item with some lengthy text wrapping hopefully across several lines. We add
-  a few words to really show the line wrapping.
-- Bullet.
-  + Bullet.
-    * Bullet.
-#+end_src
-
-** Checklists
-
-#+begin_src org
+** [33%]check box
 - [X] Checked.
 - [-] Half-checked.
 - [ ] Not checked.
 - Normal list item.
-#+end_src
-
-** Ordered lists
-
-Enumerated lists are marked with numbers or letters:
-
-#+begin_src org
+** lists
 1. Arabic (decimal) numbered list item. We add a few words to show the line
    wrapping.
    A. Upper case alpha (letter) numbered list item.
@@ -306,101 +88,29 @@ Enumerated lists are marked with numbers or letters:
       b. Lower alpha.
    B. Upper alpha.
 2. Number.
-#+end_src
+   - First term to define ::
+            Definition of the first term. We add a few words to show the line wrapping,
+            to see what happens when you have long lines.
+   - Second term ::
+            Explication of the second term with *inline markup*.
 
-You can have ordered lists with jumping numbers:
-
-#+begin_src org
-2. [@2] We start with point number 2.
-3. Automatically numbered item.
-#+end_src
-
-** Definition lists
-   :PROPERTIES:
-   :ID:       f1a4a242-755b-4c38-9280-ee3f60e2b29a
-   :END:
-
-Labeled, multi-line lists.
-
-#+begin_src org
-- First term to define ::
-     Definition of the first term. We add a few words to show the line wrapping,
-     to see what happens when you have long lines.
-
-- Second term ::
-     Explication of the second term with *inline markup*.
-
-     In many paragraphs.
-#+end_src
-
-** Separating lists
-
-Adjacent lists sometimes like to fuse. To force the start of a new list, offset
-the two lists by an empty line comment:
-
-#+begin_src org
-- apples
-- oranges
-- bananas
-
-# Comment.
-
-- carrots
-- tomatoes
-- celery
-#+end_src
-
-* Tables
-
-Tables are one of the most refined areas of the Org mode syntax. They are very easy
-to create and to read.
-
-** Simple table
-
-#+begin_src org
+            In many paragraphs.
+** tables
 | Cell in column 1, row 1 | Cell in column 2, row 1 |
 | Cell in column 1, row 2 | Cell in column 2, row 2 |
-#+end_src
 
-Org tables have cells of at most one line long: there is no such thing as
-a multi-line table cell in Org.
-
-** Column formatting
-
-Columns are automatically aligned:
-
-- Number-rich columns to the right, and
-- String-rich columns to the left.
-
-*** Table with aligned cells
-
-If you want to override the automatic alignment, use ~<r>~, ~<c>~ or ~<l>~.
-
-#+begin_src org
-,#+CAPTION: Table with aligned columns
+#+CAPTION: Table with aligned columns
 |          <r> | <c>          | <l>          |
 |            1 | 2            | 3            |
 |        Right | Center       | Left         |
 | xxxxxxxxxxxx | xxxxxxxxxxxx | xxxxxxxxxxxx |
-#+end_src
 
-*** Table with column size adjusted
-
-** Header row
-
-You can create tables with an header row (by using an horizontal line of dashes
-to separate it from the rest of the table).
-
-#+begin_src org
 #+CAPTION: Table with an header row
 | Name of column 1 | Name of column 2 | Name of column 3 |
 |------------------+------------------+------------------|
 | Top left         | Top middle       |                  |
 |                  |                  | Right            |
 | Bottom left      | Bottom middle    |                  |
-#+end_src
-
-** A very long table
 
 To test "sticky table headers"...
 
@@ -436,246 +146,13 @@ To test "sticky table headers"...
 |               28 |                  |                  |
 |               29 |                  |                  |
 |      Bottom left | Bottom middle    |                  |
-
-** Table placement
-
-#+begin_src org
-#+ATTR_LATEX: :center nil
-| a | b |
-| 1 | 2 |
-#+end_src
-
-XXX Different from the following:
-
-#+begin_src org
-| a | b |
-| 1 | 2 |
-#+end_src
-
-** Align tables on the page
-
-*** Left
-
-Here is a table on the left side:
-
-#+begin_src org
-,#+LATEX: \noindent
-,#+ATTR_LATEX: :center nil
-| a | b | c |
-|---+---+---|
-| 1 | 2 | 3 |
-| 4 | 5 | 6 |
-,#+LATEX: \hfill
-#+end_src
-
-The ~noindent~ just gets rid of the indentation of the first line of a paragraph
-which in this case is the table. The ~hfill~ adds infinite stretch after the
-table, so it pushes the table to the left.
-
-*** Center
-
-Here is a centered table:
-
-#+begin_src org
-| a | b | c |
-|---+---+---|
-| 1 | 2 | 3 |
-| 4 | 5 | 6 |
-#+end_src
-
-*** Right
-
-And here's a table on the right side:
-
-#+begin_src org
-#+LATEX: \hfill
-#+ATTR_LATEX: :center nil
-| a | b | c |
-|---+---+---|
-| 1 | 2 | 3 |
-| 4 | 5 | 6 |
-#+end_src
-
-Here the ~hfill~ adds infinite stretch before the table, so it pushes the table
-to the right.
-
-** Table size
-
-#+begin_src org
-#+ATTR_HTML: :width 100%
-| Cell in column 1, row 1 | Cell in column 2, row 1 |
-| Cell in column 1, row 2 | Cell in column 2, row 2 |
-#+end_src
-
-** CSV
-
-You can fill a table from a CSV file using R commands.
-
-* Links
-  :PROPERTIES:
-  :CUSTOM_ID: links
-  :END:
-
-#+begin_src org :eval no
-,* Links
-  :PROPERTIES:
-  :CUSTOM_ID: links
-  :END:
-#+end_src
-
-This document is available in [[file:README.org][plain text]], [[file:README.html][HTML]] and [[file:README.pdf][PDF]].
-
-The links are delimited by double square brackets.
-
 ** External links
-
-#+begin_src org
 See http://www.pirilampo.org (automatic!) and the
 [[http://orgmode.org/][Org mode Web site]].
-#+end_src
 
-*** Relative links
-
-#+begin_src org
-[[../README.html][Home]]
-#+end_src
-
-*** Email links
-
-#+begin_src org
-[[mailto:john.doe@example.com][email John Doe]]
-#+end_src
-
-*** Image links
-
-To get image links, put a link to a file in the description.
-
-#+begin_src org
-Clicking on the image [[http://orgmode.org/][file:images/org-mode-unicorn.png]]
-leads to the Org mode home page.
-#+end_src
-
-** Internal links
-   :PROPERTIES:
-   :ID:       0d2b0cb2-116c-4a61-a076-4c641faf4346
-   :END:
-
-*** Inline anchors
-
-Anchors are used to specify hypertext link targets.
-
-#+begin_src org
 <<anchor>> Inline anchors make arbitrary content referenceable.
-#+end_src
 
-*** Internal cross references
-
-Links generally point to an headline.
-
-#+begin_src org
-See chapter [[#links][Links]].
-#+end_src
-
-To add a link to a figure (e.g., "See Figure 1"), just do:
-
-#+begin_src org
-,#+name: fig
-,#+caption: caption
-[[file:fig.png]]
-
-See figure [[fig]].
-#+end_src
-
-You can also create a hypertext link to a document anchor in the current
-document /or in another document/.
-
-#+begin_src org
-See:
 - Location [[anchor][cross reference]].
-- Section [[id:0d2b0cb2-116c-4a61-a076-4c641faf4346][Internal links]]
-#+end_src
-
-** Extensions that define new hyperlinks targets
-
-* Images
-
-You can insert *image* files of different *formats* to a document:
-
-|      | HTML                         | PDF |
-|------+------------------------------+-----|
-| gif  | yes                          |     |
-| jpeg | yes                          |     |
-| png  | yes                          |     |
-| bmp  | (depends on browser support) |     |
-
-** Inline picture
-
-#+begin_src org
-#+caption: Org mode logo
-[[file:images/org-mode-unicorn.png]]
-#+end_src
-
-#+begin_src org
-Click to see the [[file:images/org-mode-unicorn.png][Unicorn picture]].
-#+end_src
-
-** Image alignment (using positioning)
-
-Books usually align/float images on the right/left of the contents.
-
-*** Image is left aligned
-
-*** Image is right aligned
-
-*** Image is centered
-
-#+name: test
-#+begin_src R :exports results :file-ext pdf :results graphics :width 8 :height 3
-plot(runif(100))
-#+end_src
-
-#+attr_latex: :float t :placement [b]
-#+results: test
-[[file:test.pdf]]
-
-** Image attributes and values
-
-XXX Available HTML image tags include ...
-
-| Attribute      | Value(s)                    |
-|----------------+-----------------------------|
-| ~:alt~         | Alternate text              |
-| ~:height~      |                             |
-| ~:width~       | User defined size in pixels |
-| ~:align~       |                             |
-| ~:border~      |                             |
-| ~:bordercolor~ |                             |
-| ~:hspace~      |                             |
-| ~:vspace~      |                             |
-| ~:title~       | User defined text           |
-
-#+begin_src org
-#+ATTR_LaTeX: :width 0.25\linewidth
-[[file:images/org-mode-unicorn.png]]
-#+end_src
-
-Place images side by side: XXX
-
-** Figures
-
-To define images that will be *treated as book illustrations* (figures) and
-automatically labeled and numbered, use XXX.
-
-* Videos
-
-Videos can't be added directly.
-
-Though, you can add an image with a link to the video like this:
-
-#+begin_src org
-[[http://www.youtube.com/watch?v=DnSGSiXYuOk][file:../bigblow.png]]
-#+end_src
-
 * Admonitions
 
 Admonitions (contextual backgrounds) are statements taken out of the content's
@@ -1400,7 +877,7 @@ You can also use raw LaTeX. XXX
 Text can be preformatted (in a fixed-width font).
 #+LaTeX_END: \end{verbatim}
 
-* Footnotes 
+* Footnotes_
 
 #+begin_src org
 It is possible to define named footnotes[fn:myfootnote], or ones with automatic
@@ -1471,97 +948,6 @@ The string ~fixme~ (in *upper case*) gets replaced by a "Fix Me!" image:
 
 #+begin_src org
 FIXME Delete this...
-#+end_src
-
-* Graphs with Graphviz
-
-To enable the Graphviz extension, we have to add it to the extensions list in
-the ~org-babel-load-languages~ variable.
-
-#+begin_src emacs-lisp :exports code
-(add-to-list 'org-babel-load-languages '(dot . t))
-(org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
-#+end_src
-
-It uses directly the ~dot~ command to process DOT language.
-
-** Undirected
-
-#+begin_src org
-,#+begin_src dot :file images/graph.png :cmdline -Tpng
-graph foo {
-        "bar" -- "baz";
-}
-,#+end_src
-#+end_src
-
-** Directed
-
-#+begin_src org :exports results
-,#+begin_src dot :file images/digraph.png :cmdline -Tpng
-digraph foo {
-        "bar" -> "baz";
-}
-,#+end_src
-#+end_src
-
-* Graphs with R
-
-The output from the *execution* of programs, scripts or commands can be inserted
-in the document itself, allowing you to work in the /reproducible research/
-mindset.
-
-To enable the Graphviz extension, we have to add it to the extensions list in
-the ~org-babel-load-languages~ variable.
-
-#+begin_src emacs-lisp :exports code
-(add-to-list 'org-babel-load-languages '(R . t)) ; Requires R and ess-mode.
-(org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages)
-#+end_src
-
-It uses directly the ~R~ command to process R language.
-
-** Example
-
-Data to be charted:
-
-#+name: data
-| Month | Degrees |
-|-------+---------|
-|    01 |     3.8 |
-|    02 |     4.1 |
-|    03 |     6.3 |
-|    04 |     9.0 |
-|    05 |    11.9 |
-|    06 |    15.1 |
-|    07 |    17.1 |
-|    08 |    17.4 |
-|    09 |    15.7 |
-|    10 |    11.8 |
-|    11 |     7.7 |
-|    12 |     4.8 |
-
-Code:
-
-#+name: R-plot
-#+begin_src R :var data=data :results graphics :file images/Rplot.png :exports both
-plot(data, type="b", bty="l", col=c("#ABD249"), las=1, lwd=4)
-grid(nx=NULL, ny=NULL, col=c("#E8E8E8"), lwd=1)
-legend("bottom", legend=c("Degrees"), col=c("#ABD249"), pch=c(19))
-#+end_src
-
-The resulting chart:
-
-#+results: R-plot
-[[file:images/Rplot.png]]
-
-** COMMENT ggplot2
-
-#+begin_src R :results output graphics :file foo.png :session *foo*
-  library(ggplot2)
-  ggplot(data.frame(x = rnorm(10), y = rnorm(10)),
-         aes(x = x, y = y)) +
-    geom_point()
 #+end_src
 
 * Citations
@@ -1653,6 +1039,24 @@ this program. If not, see http://www.gnu.org/licenses/.
 #+html: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=VCVAS6KPDQ4JC&lc=BE&item_number=refcard%2dorg%2dmode&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted">
 #+html:   <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="btn_donate_LG.gif" />
 #+html: </a>
+
+* Graphs with Graphviz
+
+** Undirected
+
+#+begin_src dot :file images/graph.png :cmdline -Tpng
+graph foo {
+        "bar" -- "baz";
+}
+#+end_src
+
+** Directed
+
+#+begin_src dot :file images/digraph.png :cmdline -Tpng
+digraph foo {
+        "bar" -> "baz";
+}
+#+end_src
 
 * Footnotes
 
